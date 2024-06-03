@@ -11,7 +11,6 @@ import java.util.List;
 public class UsuarioService {
 
     @Autowired
-    private UsuarioRepository usuarioRepository;
     private UsuarioRepository repository;
     public Usuario salvar(Usuario usuario){
         return repository.save(usuario);
@@ -29,7 +28,21 @@ public class UsuarioService {
         repository.deleteById(id);
     }
 
-    public Usuario saveUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public Usuario atualizar(Usuario usuario) {
+
+        Usuario existingUsuario = repository.findById(usuario.getId()).orElse(null);
+        if (existingUsuario != null) {
+            existingUsuario.setNome(usuario.getNome());
+            existingUsuario.setNumero(usuario.getNumero());
+            existingUsuario.setCpf(usuario.getCpf());
+            existingUsuario.setLogin(usuario.getLogin());
+            existingUsuario.setEmail(usuario.getEmail());
+            existingUsuario.setData_nasc(usuario.getData_nasc());
+            existingUsuario.setSenha(usuario.getSenha());
+            existingUsuario.setEndereco(usuario.getEndereco());
+            return repository.save(existingUsuario);
+        } else {
+            throw new RuntimeException("Usuário não encontrado com ID: " + usuario.getId());
+        }
     }
 }

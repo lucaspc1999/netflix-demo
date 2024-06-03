@@ -9,6 +9,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,7 +31,7 @@ public class Usuario implements Serializable {
 
     @NotNull
     @Column(length = 11)
-    private Integer cpf;
+    private String cpf;  // Alterado para String
 
     @NotNull
     @Column(unique = true)
@@ -41,6 +42,7 @@ public class Usuario implements Serializable {
     private String email;
 
     @NotNull
+    @Temporal(TemporalType.DATE)
     private Date data_nasc;
 
     @NotEmpty
