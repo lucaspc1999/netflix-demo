@@ -1,18 +1,19 @@
 package com.netflix.demo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-
 
 @Data
 @Entity
-@Table (name ="tb_perfil")
+@Table(name = "tb_perfil")
 public class Perfil {
     @Id
     @GeneratedValue
     @Column(nullable = false)
     private Integer id;
 
+    @NotEmpty
     private String nome;
 
     @ManyToOne

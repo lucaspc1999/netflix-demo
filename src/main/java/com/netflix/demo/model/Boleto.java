@@ -1,6 +1,8 @@
 package com.netflix.demo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,8 +18,10 @@ public class Boleto implements Serializable {
     @Column(nullable = false)
     private Integer id;
 
+    @Size(max = 50)
     private String cod_de_barra;
 
+    @NotNull
     private Date vencimento;
 
     @ManyToOne

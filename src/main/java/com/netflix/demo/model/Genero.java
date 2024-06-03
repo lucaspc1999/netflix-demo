@@ -1,8 +1,8 @@
 package com.netflix.demo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-
 
 import java.io.Serializable;
 
@@ -16,6 +16,6 @@ public class Genero implements Serializable {
     @Column(nullable = false)
     private Integer id;
 
+    @NotEmpty
     private String titulo;
 }
-

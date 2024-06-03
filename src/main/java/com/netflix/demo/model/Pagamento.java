@@ -1,22 +1,26 @@
 package com.netflix.demo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
 
 import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
-@Table (name = "tb_pagamento")
+@Table(name = "tb_pagamento")
 public class Pagamento implements Serializable {
     @Id
     @GeneratedValue
     @Column(nullable = false)
     private Integer id;
+
     private String pix;
+
+    @NotNull
     private Date data_venc;
+
     private String gift_card;
 
     @OneToOne

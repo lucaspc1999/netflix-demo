@@ -4,11 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 @Data
 @Entity
@@ -20,11 +20,15 @@ public class Usuario implements Serializable {
     @Column(nullable = false)
     private Integer id;
 
+    @NotEmpty
     private String nome;
 
+    @Size(min = 11, max = 11)
+    @NotEmpty
     @Column(length = 11)
     private String numero;
 
+    @NotNull
     @Column(length = 11)
     private Integer cpf;
 
@@ -39,11 +43,10 @@ public class Usuario implements Serializable {
     @NotNull
     private Date data_nasc;
 
-    @NotNull
+    @NotEmpty
     private String senha;
 
     @ManyToOne
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
-
 }
