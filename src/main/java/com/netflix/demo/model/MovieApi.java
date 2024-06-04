@@ -21,5 +21,6 @@ public class MovieApi {
     private String posterPath;
     private String releaseDate;
     private boolean video;
+    private List<MovieApi> results;
 
 }

@@ -2,7 +2,8 @@ package com.netflix.demo.controller;
 
 
 import com.netflix.demo.model.Filme;
-import com.netflix.demo.model.MovieApiResponse;
+
+import com.netflix.demo.model.MovieApi;
 import com.netflix.demo.service.FilmeService;
 import com.netflix.demo.service.TmdbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class FilmeController {
     }
 
     @GetMapping("/popular")
-    public MovieApiResponse getPopularMovies() {
+    public MovieApi getPopularMovies() {
         return tmdbservice.getPopularMovies();
     }
 }
